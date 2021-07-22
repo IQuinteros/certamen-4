@@ -16,15 +16,16 @@
 </head>
 <body>
     <header class="header">
-        <a class="header__logo" href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt=""></a>
+        <a class="header__logo" href="@Url.Action("Index", "Home")"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt=""></a>
         <button id="nav-button" class="header__nav-button">
             <span class="material-icons material-icons-outlined">menu</span>
         </button>
-        <form action="search.html" method="get">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+        {
             <span class="material-icons material-icons-outlined">search</span>
-            <input type="text" name="search" placeholder="Buscar artículos">
+            <input type="text" name="text" placeholder="Buscar artículos">
             <input type="submit" value="Buscar">
-        </form>
+        }
     </header>
 
     <nav id="nav" class="nav">
@@ -51,10 +52,8 @@
     <footer class="footer">
         <p>Bienvenido a Zeak Store</p>
         <hr>
-        <a href="stores.html">Nuestras tiendas</a>
+        @Html.ActionLink("Nuestras tiendas", "Stores", "Home")
     </footer>
-
-    <script src="js/style.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
