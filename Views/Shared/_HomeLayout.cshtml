@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Zeak Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    @Styles.Render("~/Content/homecss")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="header">
+        <a class="header__logo" href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt=""></a>
+        <button id="nav-button" class="header__nav-button">
+            <span class="material-icons material-icons-outlined">menu</span>
+        </button>
+        <form action="search.html" method="get">
+            <span class="material-icons material-icons-outlined">search</span>
+            <input type="text" name="search" placeholder="Buscar artículos">
+            <input type="submit" value="Buscar">
+        </form>
+    </header>
+
+    <nav id="nav" class="nav">
+        <ul>
+            <li><a href="#">Computadores</a></li>
+            <li><a href="#">Celulares</a></li>
+            <li><a href="#">Apple</a></li>
+            <li><a href="#">Computadores</a></li>
+            <li><a href="#">Celulares</a></li>
+            <li><a href="#">Apple</a></li>
+            <li><a href="#">Computadores</a></li>
+            <li><a href="#">Celulares</a></li>
+            <li><a href="#">Apple</a></li>
+            <li><a href="#">Computadores</a></li>
+            <li><a href="#">Celulares</a></li>
+            <li><a href="#">Apple</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <p>Bienvenido a Zeak Store</p>
+        <hr>
+        <a href="stores.html">Nuestras tiendas</a>
+    </footer>
+
+    <script src="js/style.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/homejs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

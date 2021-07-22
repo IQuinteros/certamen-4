@@ -22,9 +22,15 @@ namespace IgnacioQuinteros
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/homejs").Include(
+                      "~/Scripts/style.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/homecss").Include(
+                      "~/Content/style.css"));
         }
     }
 }
