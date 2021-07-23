@@ -12,106 +12,94 @@ namespace IgnacioQuinteros.Controllers
 {
     public class AdminProductsController : Controller
     {
-        private IQuinterosContext db = new IQuinterosContext();
+        private IQuinterosContext context = new IQuinterosContext();
 
-        // GET: AdminProducts
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(context.Products.ToList());
         }
 
-        // GET: AdminProducts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Product product = db.Products.Find(id);
+            Product product = context.Products.Find(id);
             if (product == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(product);
         }
 
-        // GET: AdminProducts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminProducts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Summary,ShortSummary,MaxVisibility,ImageUrl,Stock,Category,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
+                context.Products.Add(product);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(product);
         }
 
-        // GET: AdminProducts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Product product = db.Products.Find(id);
+            Product product = context.Products.Find(id);
             if (product == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(product);
         }
 
-        // POST: AdminProducts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Summary,ShortSummary,MaxVisibility,ImageUrl,Stock,Category,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(product).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(product);
         }
 
-        // GET: AdminProducts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Product product = db.Products.Find(id);
+            Product product = context.Products.Find(id);
             if (product == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(product);
         }
 
-        // POST: AdminProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
+            Product product = context.Products.Find(id);
+            context.Products.Remove(product);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +107,7 @@ namespace IgnacioQuinteros.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

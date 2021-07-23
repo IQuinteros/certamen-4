@@ -77,6 +77,14 @@ namespace IgnacioQuinteros.Controllers
                 return RedirectToAction("Index");
             }
 
+            List<Product> recommendedProducts = GetProductsFromCategory(products, product.Category);
+            recommendedProducts.RemoveAll(delegate(Product refProduct)
+            {
+                return refProduct.Id == product.Id;
+            });
+
+            ViewBag.RecommendedProducts = recommendedProducts;
+
             return View(product);
         }
 
@@ -129,6 +137,27 @@ namespace IgnacioQuinteros.Controllers
             }
 
             return categories.ToList();
+        }
+
+        private List<Product> GetProductsFromCategory(DbSet<Product> products, params string[] categories)
+        {
+            return GetProductsFromCategory(products, categories.ToList());
+        }
+
+        private List<Product> GetProductsFromCategory(DbSet<Product> products, List<string> categories)
+        {
+            List<Product> result = new List<Product>();
+            foreach(Product item in products)
+            {
+                if (categories.Exists(delegate(string category) { 
+                    return category.ToLower().Equals(item.Category.ToLower()); 
+                }))
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -64,3 +64,5 @@ autoCoverInterval = setInterval(onChangeSelected.bind(true), 5000);
 
 controlLeft.addEventListener("click", onChangeSelected.bind(false));
 controlRight.addEventListener("click", onChangeSelected.bind(true));
+
+

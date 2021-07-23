@@ -17,20 +17,25 @@ namespace IgnacioQuinteros.Models
     public partial class Product
     {
         public int Id { get; set; }
-        [MaxLength(100)]
+        [MaxLength(150)]
+        [Required]
         public string Title { get; set; }
-
+        [Required]
         [AllowHtml]
-        [UIHint("tinymce_jquery_full")]
         public string Summary { get; set; }
+        [Required]
         [MaxLength(255)]
         public string ShortSummary { get; set; }
         public bool MaxVisibility { get; set; }
         [MaxLength(255)]
+        [Required]
         public string ImageUrl { get; set; }
+        [Required]
         public int Stock { get; set; }
         [MaxLength(20)]
+        [Required]
         public string Category { get; set; }
+        [Required]
         public int Price { get; set; }
 
         public string GetMediumClass() => MaxVisibility ? "product-item--medium" : "";

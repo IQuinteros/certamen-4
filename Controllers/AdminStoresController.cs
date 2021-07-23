@@ -12,106 +12,94 @@ namespace IgnacioQuinteros.Controllers
 {
     public class AdminStoresController : Controller
     {
-        private IQuinterosContext db = new IQuinterosContext();
+        private IQuinterosContext context = new IQuinterosContext();
 
-        // GET: AdminStores
         public ActionResult Index()
         {
-            return View(db.Stores.ToList());
+            return View(context.Stores.ToList());
         }
 
-        // GET: AdminStores/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Store store = db.Stores.Find(id);
+            Store store = context.Stores.Find(id);
             if (store == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(store);
         }
 
-        // GET: AdminStores/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminStores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,ImageUrl,Address")] Store store)
         {
             if (ModelState.IsValid)
             {
-                db.Stores.Add(store);
-                db.SaveChanges();
+                context.Stores.Add(store);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(store);
         }
 
-        // GET: AdminStores/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Store store = db.Stores.Find(id);
+            Store store = context.Stores.Find(id);
             if (store == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(store);
         }
 
-        // POST: AdminStores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,ImageUrl,Address")] Store store)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(store).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(store).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(store);
         }
 
-        // GET: AdminStores/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            Store store = db.Stores.Find(id);
+            Store store = context.Stores.Find(id);
             if (store == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(store);
         }
 
-        // POST: AdminStores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Store store = db.Stores.Find(id);
-            db.Stores.Remove(store);
-            db.SaveChanges();
+            Store store = context.Stores.Find(id);
+            context.Stores.Remove(store);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +107,7 @@ namespace IgnacioQuinteros.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }
