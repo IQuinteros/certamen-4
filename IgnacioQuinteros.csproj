@@ -178,7 +178,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\style.css.map" />
     <EntityDeploy Include="Models\IQuinteros.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IQuinteros.Designer.cs</LastGenOutput>
@@ -186,6 +185,7 @@
     <Content Include="Models\IQuinteros.edmx.diagram">
       <DependentUpon>IQuinteros.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\style.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
