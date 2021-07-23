@@ -24,7 +24,7 @@ namespace IgnacioQuinteros.Controllers
 
         public ActionResult Search(string text)
         {
-            DbSet<product> products = context.products;
+            DbSet<Product> products = context.products;
             if (String.IsNullOrWhiteSpace(text))
             {
 

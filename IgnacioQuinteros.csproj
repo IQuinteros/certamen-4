@@ -148,10 +148,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IQuinteros.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\product.cs">
+    <Compile Include="Models\Product.cs">
       <DependentUpon>IQuinteros.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\store.cs">
+    <Compile Include="Models\Store.cs">
       <DependentUpon>IQuinteros.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

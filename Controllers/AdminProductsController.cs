@@ -27,7 +27,7 @@ namespace IgnacioQuinteros.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product product = db.products.Find(id);
+            Product product = db.products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace IgnacioQuinteros.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,title,summary,shortSummary,maxVisibility,stock,price")] product product)
+        public ActionResult Create([Bind(Include = "id,title,summary,shortSummary,maxVisibility,stock,price")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace IgnacioQuinteros.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product product = db.products.Find(id);
+            Product product = db.products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace IgnacioQuinteros.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,title,summary,shortSummary,maxVisibility,stock,price")] product product)
+        public ActionResult Edit([Bind(Include = "id,title,summary,shortSummary,maxVisibility,stock,price")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace IgnacioQuinteros.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product product = db.products.Find(id);
+            Product product = db.products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace IgnacioQuinteros.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            product product = db.products.Find(id);
+            Product product = db.products.Find(id);
             db.products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

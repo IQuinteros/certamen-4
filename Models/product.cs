@@ -12,7 +12,7 @@ namespace IgnacioQuinteros.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class product
+    public partial class Product
     {
         public int id { get; set; }
         public string title { get; set; }

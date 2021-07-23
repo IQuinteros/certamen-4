@@ -12,7 +12,7 @@ namespace IgnacioQuinteros.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class store
+    public partial class Store
     {
         public int id { get; set; }
         public string title { get; set; }
