@@ -1,23 +1,21 @@
-﻿
+﻿@model IgnacioQuinteros.Models.Product
+
 @{
     ViewBag.Title = "Article";
 }
 
 <div class="article-overview">
     <section class="section section--overview">
-        <img src="https://source.unsplash.com/random/1" alt="">
-        <h1>Título del producto que puede ser extraordinariamente legendario y largo</h1>
+        <img src="@Html.DisplayFor(model => model.ImageUrl)" alt="">
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
         <div class="section--overview__row">
-            <p>Stock: 3</p>
-            <h2>$ 40.000</h2>
+            <p>Stock: @Html.DisplayFor(model => model.Stock)</p>
+            <h2>$ @Html.DisplayFor(model => model.Price)</h2>
         </div>
     </section>
     <hr>
     <section class="section section--description">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae accusantium vitae a accusamus distinctio, architecto, eius quos nisi ratione odio earum necessitatibus modi reprehenderit aperiam vero. Quaerat ipsum officia debitis.
-        Excepturi dolorem quis sunt deserunt fuga ducimus molestiae similique saepe recusandae soluta corporis necessitatibus corrupti aliquam tempora, reprehenderit at praesentium tempore amet rerum iste vel quibusdam impedit. Corrupti, suscipit qui.
-        Hic, sed nemo id ex atque, aliquid deleniti distinctio nostrum sit praesentium libero voluptas quam, culpa aut veniam. Iusto, temporibus quis aperiam amet cupiditate labore officia earum odit nesciunt sed?
-        Provident adipisci nisi inventore ut voluptas delectus nam, sit molestiae, repellat, deleniti perspiciatis nulla nobis dolor necessitatibus hic officia quae. Officia veniam illo est, minima dolorem ipsam nesciunt doloribus iusto!
+        @Html.Raw(Model.Summary.Replace("\r\n", "<br />"))
     </section>
 </div>
 

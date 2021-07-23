@@ -23,7 +23,7 @@
         @using (Html.BeginForm("Search", "Home", FormMethod.Get))
         {
             <span class="material-icons material-icons-outlined">search</span>
-            <input type="text" name="text" placeholder="Buscar artículos">
+            <input type="text" name="text" placeholder="Buscar artículos" value="@ViewBag.SearchText">
             <input type="submit" value="Buscar">
         }
     </header>
@@ -32,7 +32,7 @@
         <ul>
             @foreach (string category in ViewBag.Categories)
             {
-                <li>@Html.ActionLink(category, "Search", "Home")</li>
+                <li>@Html.ActionLink(category, "Search", "Home", new { text=category, category = 1 }, new { })</li>
             }
         </ul>
     </nav>
@@ -45,8 +45,8 @@
         <p>Bienvenido a Zeak Store</p>
         <hr>
         @Html.ActionLink("Nuestras tiendas", "Stores", "Home")
-        <hr>
-        @Html.ActionLink("Ir al administrador", "Index", "AdminProductsController")
+        <br>
+        @Html.ActionLink("Ir al administrador", "Index", "Test")
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

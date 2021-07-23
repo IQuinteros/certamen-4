@@ -7,7 +7,7 @@
 <section id="cover" class="section section--cover">
     @foreach (var item in ViewBag.CoverProducts)
     {
-        <article class="cover-item cover-item--selected">
+        <article onclick="window.open('@Url.Action("Article", "Home", new { id=item.Id })', '_self')" class="cover-item cover-item--selected">
             <img src="@item.ImageUrl" alt="">
             <div class="cover-item__info">
                 <h1>$ @item.Price</h1>
@@ -28,11 +28,11 @@
     <div class="products-grid">
         @foreach(var item in Model)
         {
-            <article data-prod-id="@item.Id" class="product-item @item.GetMediumClass()">
-                <img src="@item.ImageUrl" alt="">
-                <h1>$ @item.Price</h1>
-                <p>@item.Title</p>
-                <p class="product-item__description">@item.ShortSummary</p>
+            <article onclick="window.open('@Url.Action("Article", "Home", new { id=item.Id })', '_self')" data-prod-id="@Html.DisplayFor(modelItem => item.Id)" class="product-item @item.GetMediumClass()">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="">
+                <h1>$ @Html.DisplayFor(modelItem => item.Price)</h1>
+                <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                <p class="product-item__description">@Html.DisplayFor(modelItem => item.ShortSummary)</p>
             </article>
         }
     </div>

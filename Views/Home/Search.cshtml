@@ -1,48 +1,19 @@
-﻿@{
+﻿@model IEnumerable<IgnacioQuinteros.Models.Product>
+
+@{
     ViewBag.Title = "Búsqueda";
 }
 <section class="section section--results">
     <h1 class="section__title">Resultados de búsqueda</h1>
     <div class="products-grid">
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
+        @foreach (var item in Model)
+        {
+            <article onclick="window.open('@Url.Action("Article", "Home", new { id=item.Id })', '_self')" data-prod-id="@Html.DisplayFor(modelItem => item.Id)" class="product-item @item.GetMediumClass()">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="">
+                <h1>$ @Html.DisplayFor(modelItem => item.Price)</h1>
+                <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                <p class="product-item__description">@Html.DisplayFor(modelItem => item.ShortSummary)</p>
+            </article>
+        }
     </div>
 </section>

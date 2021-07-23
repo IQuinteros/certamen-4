@@ -11,16 +11,25 @@ namespace IgnacioQuinteros.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public partial class Product
     {
         public int Id { get; set; }
+        [MaxLength(100)]
         public string Title { get; set; }
+
+        [AllowHtml]
+        [UIHint("tinymce_jquery_full")]
         public string Summary { get; set; }
+        [MaxLength(255)]
         public string ShortSummary { get; set; }
         public bool MaxVisibility { get; set; }
+        [MaxLength(255)]
         public string ImageUrl { get; set; }
         public int Stock { get; set; }
+        [MaxLength(20)]
         public string Category { get; set; }
         public int Price { get; set; }
 

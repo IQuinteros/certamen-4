@@ -23,7 +23,7 @@ namespace IgnacioQuinteros
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/homejs").Include(
-                      "~/Scripts/style.js"));
+                      "~/Scripts/script.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

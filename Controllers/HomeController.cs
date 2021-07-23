@@ -24,28 +24,64 @@ namespace IgnacioQuinteros.Controllers
         public ActionResult Stores()
         {
             ViewBag.Categories = GetCategoriesFromProducts();
-            return View(context.Stores);
+            return View(GetStores());
         }
 
-        public ActionResult Search(string text)
+        public ActionResult Search(string text, int? category)
         {
             DbSet<Product> products = GetProducts();
-            if (String.IsNullOrWhiteSpace(text))
+            List<Product> result;
+            if (!String.IsNullOrWhiteSpace(text))
             {
+                result = new List<Product>();
+                foreach (Product product in products)
+                {
+                    if (category != null && category == 1 && product.Category.ToLower().Equals(text.ToLower()))
+                    {
+                        result.Add(product);
+                        continue;
+                    }
 
+                    if (product.Category.ToLower().Contains(text.ToLower()) || 
+                        product.Title.ToLower().Contains(text.ToLower())
+                    )
+                    {
+                        result.Add(product);
+                        continue;
+                    }
+                }
+            } else
+            {
+                result = products.ToList();
             }
+
+            ViewBag.SearchText = text;
             ViewBag.Categories = GetCategoriesFromProducts(products);
-            return View();
+            return View(result);
         }
 
         public ActionResult Article(int? id)
         {
             DbSet<Product> products = GetProducts();
             ViewBag.Categories = GetCategoriesFromProducts(products);
-            return View();
+
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            Product product = products.Find(id);
+
+            if(product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(product);
         }
 
         private DbSet<Product> GetProducts() => context.Products;
+        private DbSet<Store> GetStores() => context.Stores;
 
         private List<string> GetCategoriesFromProducts()
         {

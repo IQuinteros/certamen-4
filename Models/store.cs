@@ -11,12 +11,16 @@ namespace IgnacioQuinteros.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Store
     {
         public int Id { get; set; }
+        [MaxLength(100)]
         public string Title { get; set; }
+        [MaxLength(255)]
         public string ImageUrl { get; set; }
-        public string address { get; set; }
+        [MaxLength(150)]
+        public string Address { get; set; }
     }
 }
