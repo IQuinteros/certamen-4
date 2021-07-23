@@ -25,7 +25,7 @@ namespace IgnacioQuinteros.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Product> products { get; set; }
-        public virtual DbSet<Store> stores { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
     }
 }

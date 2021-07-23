@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a05d7965f4c9437699e44e608cc015b1" Name="Diagram1">
-        <EntityTypeShape EntityType="IQuinterosModel.product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IQuinterosModel.store" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IQuinterosModel.Product" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IQuinterosModel.Store" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

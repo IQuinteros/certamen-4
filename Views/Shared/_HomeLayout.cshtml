@@ -30,18 +30,10 @@
 
     <nav id="nav" class="nav">
         <ul>
-            <li><a href="#">Computadores</a></li>
-            <li><a href="#">Celulares</a></li>
-            <li><a href="#">Apple</a></li>
-            <li><a href="#">Computadores</a></li>
-            <li><a href="#">Celulares</a></li>
-            <li><a href="#">Apple</a></li>
-            <li><a href="#">Computadores</a></li>
-            <li><a href="#">Celulares</a></li>
-            <li><a href="#">Apple</a></li>
-            <li><a href="#">Computadores</a></li>
-            <li><a href="#">Celulares</a></li>
-            <li><a href="#">Apple</a></li>
+            @foreach (string category in ViewBag.Categories)
+            {
+                <li>@Html.ActionLink(category, "Search", "Home")</li>
+            }
         </ul>
     </nav>
 

@@ -1,22 +1,20 @@
-﻿@{
+﻿@model IEnumerable<IgnacioQuinteros.Models.Product>
+
+@{
     ViewBag.Title = "Home";
 }
 
 <section id="cover" class="section section--cover">
-    <article class="cover-item cover-item--selected">
-        <img src="https://source.unsplash.com/random" alt="">
-        <div class="cover-item__info">
-            <h1>$30.000</h1>
-            <p>Nombre del producto que puede ser muy largo</p>
-        </div>
-    </article>
-    <article class="cover-item">
-        <img src="https://source.unsplash.com/random/4" alt="">
-        <div class="cover-item__info">
-            <h1>$30.000</h1>
-            <p>Nombre del producto que puede ser muy largo</p>
-        </div>
-    </article>
+    @foreach (var item in ViewBag.CoverProducts)
+    {
+        <article class="cover-item cover-item--selected">
+            <img src="@item.ImageUrl" alt="">
+            <div class="cover-item__info">
+                <h1>$ @item.Price</h1>
+                <p>@item.Title</p>
+            </div>
+        </article>
+    }
     <button class="section--cover__control control--left">
         <span class="material-icons material-icons-outlined">arrow_back_ios</span>
     </button>
@@ -28,46 +26,14 @@
 <section class="section section--products">
     <h1 class="section__title">Productos destacados</h1>
     <div class="products-grid">
-        <article data-prod-id="1" class="product-item product-item--medium">
-            <img src="https://source.unsplash.com/random/2" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-            <p class="product-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ipsam accusantium tempora eum error autem laudantium nostrum soluta repudiandae? Aliquid praesentium voluptatem mollitia eveniet vero? Vel libero ipsam dignissimos facere!Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ipsam accusantium tempora eum error autem laudantium nostrum soluta repudiandae? Aliquid praesentium voluptatem mollitia eveniet vero? Vel libero ipsam dignissimos facere!Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ipsam accusantium tempora eum error autem laudantium nostrum soluta repudiandae? Aliquid praesentium voluptatem mollitia eveniet vero? Vel libero ipsam dignissimos facere!Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ipsam accusantium tempora eum error autem laudantium nostrum soluta repudiandae? Aliquid praesentium voluptatem mollitia eveniet vero? Vel libero ipsam dignissimos facere!</p>
-        </article>
-        <article data-prod-id="2" class="product-item">
-            <img src="https://source.unsplash.com/random/3" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="3" class="product-item">
-            <img src="https://source.unsplash.com/random/4" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="4" class="product-item">
-            <img src="https://source.unsplash.com/random/5" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="5" class="product-item">
-            <img src="https://source.unsplash.com/random/6" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="6" class="product-item">
-            <img src="https://source.unsplash.com/random/7" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="5" class="product-item product-item--wide">
-            <img src="https://source.unsplash.com/random/6" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
-        <article data-prod-id="6" class="product-item">
-            <img src="https://source.unsplash.com/random/7" alt="">
-            <h1>$ 30.000</h1>
-            <p>Nombre del producto que puede ser increíblemente demasiado largo</p>
-        </article>
+        @foreach(var item in Model)
+        {
+            <article data-prod-id="@item.Id" class="product-item @item.GetMediumClass()">
+                <img src="@item.ImageUrl" alt="">
+                <h1>$ @item.Price</h1>
+                <p>@item.Title</p>
+                <p class="product-item__description">@item.ShortSummary</p>
+            </article>
+        }
     </div>
 </section>

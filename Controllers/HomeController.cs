@@ -14,27 +14,85 @@ namespace IgnacioQuinteros.Controllers
 
         public ActionResult Index()
         {
-            return View(context.products);
+            DbSet<Product> products = GetProducts();
+
+            ViewBag.CoverProducts = products.Take(3);
+            ViewBag.Categories = GetCategoriesFromProducts(products);
+            return View(products);
         }
 
         public ActionResult Stores()
         {
-            return View(context.stores);
+            ViewBag.Categories = GetCategoriesFromProducts();
+            return View(context.Stores);
         }
 
         public ActionResult Search(string text)
         {
-            DbSet<Product> products = context.products;
+            DbSet<Product> products = GetProducts();
             if (String.IsNullOrWhiteSpace(text))
             {
 
             }
+            ViewBag.Categories = GetCategoriesFromProducts(products);
             return View();
         }
 
         public ActionResult Article(int? id)
         {
+            DbSet<Product> products = GetProducts();
+            ViewBag.Categories = GetCategoriesFromProducts(products);
             return View();
+        }
+
+        private DbSet<Product> GetProducts() => context.Products;
+
+        private List<string> GetCategoriesFromProducts()
+        {
+            DbSet<Product> products = context.Products;
+
+            SortedSet<string> categories = new SortedSet<string>();
+
+            foreach (Product product in products)
+            {
+                if (product.Category.Length <= 0)
+                {
+                    continue;
+                }
+                else if (product.Category.Length == 1)
+                {
+                    categories.Add(product.Category.ToUpper());
+                }
+                else if (product.Category.Length > 1)
+                {
+                    categories.Add(char.ToUpper(product.Category[0]) + product.Category.Substring(1).ToLower());
+                }
+            }
+
+            return categories.ToList();
+        }
+
+        private List<string> GetCategoriesFromProducts(DbSet<Product> products)
+        {
+            SortedSet<string> categories = new SortedSet<string>();
+
+            foreach (Product product in products)
+            {
+                if (product.Category.Length <= 0)
+                {
+                    continue;
+                }
+                else if (product.Category.Length == 1)
+                {
+                    categories.Add(product.Category.ToUpper());
+                }
+                else if (product.Category.Length > 1)
+                {
+                    categories.Add(char.ToUpper(product.Category[0]) + product.Category.Substring(1).ToLower());
+                }
+            }
+
+            return categories.ToList();
         }
     }
 }

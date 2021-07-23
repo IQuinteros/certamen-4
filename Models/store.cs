@@ -14,9 +14,9 @@ namespace IgnacioQuinteros.Models
     
     public partial class Store
     {
-        public int id { get; set; }
-        public string title { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ImageUrl { get; set; }
         public string address { get; set; }
-        public string imageUrl { get; set; }
     }
 }

@@ -14,14 +14,16 @@ namespace IgnacioQuinteros.Models
     
     public partial class Product
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public string summary { get; set; }
-        public string shortSummary { get; set; }
-        public bool maxVisibility { get; set; }
-        public int stock { get; set; }
-        public int price { get; set; }
-        public string imageUrl { get; set; }
-        public string category { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Summary { get; set; }
+        public string ShortSummary { get; set; }
+        public bool MaxVisibility { get; set; }
+        public string ImageUrl { get; set; }
+        public int Stock { get; set; }
+        public string Category { get; set; }
+        public int Price { get; set; }
+
+        public string GetMediumClass() => MaxVisibility ? "product-item--medium" : "";
     }
 }
