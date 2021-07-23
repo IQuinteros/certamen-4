@@ -128,6 +128,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminProductsController.cs" />
+    <Compile Include="Controllers\AdminStoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -475,6 +477,16 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\tinymce_jquery_full.cshtml" />
+    <Content Include="Views\AdminProducts\Create.cshtml" />
+    <Content Include="Views\AdminProducts\Delete.cshtml" />
+    <Content Include="Views\AdminProducts\Details.cshtml" />
+    <Content Include="Views\AdminProducts\Edit.cshtml" />
+    <Content Include="Views\AdminProducts\Index.cshtml" />
+    <Content Include="Views\AdminStores\Create.cshtml" />
+    <Content Include="Views\AdminStores\Delete.cshtml" />
+    <Content Include="Views\AdminStores\Details.cshtml" />
+    <Content Include="Views\AdminStores\Edit.cshtml" />
+    <Content Include="Views\AdminStores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
